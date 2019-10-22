@@ -14,11 +14,16 @@ export interface Data {
   title: string;
 }
 
+export interface Toggle {
+  id: number;
+  title: string;
+}
+
 export declare interface WidgetBase {
   _data: any;
-  data(data: any);
-
   _toggle: any;
-  toggle(toogle: any);
+  
+  data(data: any | null);
+  toggle(toogle: any | null);
 
 }

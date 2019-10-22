@@ -1,5 +1,5 @@
 import { Component, Input, ChangeDetectionStrategy, ViewChild, ElementRef } from '@angular/core';
-import { Data, WidgetBase } from './models';
+import { Data, WidgetBase, Toggle } from './models';
 import { ApiService } from './api.service';
 
 @Component({
@@ -18,8 +18,9 @@ import { ApiService } from './api.service';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class WidgetOneComponent implements WidgetBase {
-  _data: any;
-  _toogle: any;
+  _data: Data;
+  _toggle: Toggle;
+
   constructor(private hostElement: ElementRef, private apiService: ApiService ){}
 
   @Input()
@@ -30,12 +31,12 @@ export class WidgetOneComponent implements WidgetBase {
         this.hostElement.nativeElement.firstElementChild.style.backgroundColor = 'aquamarine';
       }, 500);
     }
-    this._data = data;
+    this._data = data as Data;
   }
 
   @Input()
-  set toogle(toogle: any) {
-
+  set toggle(toggle: any) {
+    this._toggle = toggle as Toggle;
   }
 
   getItem(id, forceRefreshFromServer) {
