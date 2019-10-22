@@ -7,17 +7,17 @@ import { ApiService } from './api.service';
   selector: 'widget-one',
   template: `
     <div>
-        <span><strong>Id:</strong> Widget One</span>
+        <p><strong> WIDGET ONE </strong></p>
         <span><strong>Id:</strong> {{ _data?.id }}</span>
         <p><strong>Data:</strong> {{ _data?.title }}</p>
-        <button (click)="getItem(_data?.id, false)">Refresh Data from Cache</button>
-        <button (click)="getItem(_data?.id, true)">Refresh Data from Server</button>
+
     </div>
   `,
   styleUrls: ['./widget-one.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class WidgetOneComponent implements WidgetBase {
+  componentName = 'WidgetOneComponent';
   _data: Data;
   _toggle: Toggle;
 
