@@ -6,12 +6,9 @@ import { ApiService } from './api.service';
   // tslint:disable-next-line: component-selector
   selector: 'widget-one',
   template: `
-    <div>
-        <p><strong> WIDGET ONE </strong></p>
-        <span><strong>Id:</strong> {{ _data?.id }}</span>
-        <p><strong>Data:</strong> {{ _data?.title }}</p>
-
-    </div>
+    <p><strong> WIDGET ONE </strong></p>
+    <span><strong>Id:</strong> {{ _data?.id }}</span>
+    <p><strong>Data:</strong> {{ _data?.title }}</p>
   `,
   styleUrls: ['./widget-one.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush
