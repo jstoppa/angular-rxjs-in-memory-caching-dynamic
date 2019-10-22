@@ -7,7 +7,7 @@ import { ApiService } from './api.service';
     <button (click)="getItems(false)">Refresh ALL Data from Cache</button>
     <button (click)="getItems(true)">Refresh ALL Data from Server</button>
     <div *ngFor="let widget of widgets">
-      <presentational-component [item]="bsubs[widget] | async"></presentational-component>
+      <widget-one [data]="bsubs[widget] | async"></widget-one>
     </div>
   `,
   styleUrls: ['./container.component.css'],
