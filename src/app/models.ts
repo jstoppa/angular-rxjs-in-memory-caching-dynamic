@@ -23,7 +23,7 @@ export declare interface WidgetBase {
   _data: any;
   _toggle: any;
   
-  data(data: any | null);
-  toggle(toogle: any | null);
+  data(data: any);
+  toggle(toogle: any);
 
 }
