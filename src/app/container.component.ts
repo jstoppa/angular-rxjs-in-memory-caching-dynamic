@@ -23,7 +23,7 @@ export class ContainerComponent implements AfterViewInit  {
 
   ngAfterViewInit() { 
     var factories = Array.from(this.componentFactoryResolver['_factories'].keys());
-    var type = <Type<Component>>factories.find((x: any) => x.componentName === this.widgetConfig.componentName);
+    var type = <Type<Component>>factories.find((x: any) => x.componentName === this.widgetConfig.widgetName);
 
     let factory = this.componentFactoryResolver.resolveComponentFactory(type);
 
