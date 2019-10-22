@@ -21,7 +21,7 @@ export class WidgetOneComponent implements WidgetBase {
   _data: Data;
   _toggle: Toggle;
 
-  constructor(private hostElement: ElementRef, private apiService: ApiService ){}
+  constructor(private hostElement: ElementRef){}
 
   @Input()
   set data(data: any) {
@@ -37,9 +37,5 @@ export class WidgetOneComponent implements WidgetBase {
   @Input()
   set toggle(toggle: any) {
     this._toggle = toggle as Toggle;
-  }
-
-  getItem(id, forceRefreshFromServer) {
-    this.apiService.getItems([id], forceRefreshFromServer);  
   }
 }

@@ -1,6 +1,5 @@
 import { Component, Input, ChangeDetectionStrategy, ViewChild, ElementRef } from '@angular/core';
 import { Data, WidgetBase, Toggle } from './models';
-import { ApiService } from './api.service';
 
 @Component({
   // tslint:disable-next-line: component-selector
@@ -16,7 +15,7 @@ import { ApiService } from './api.service';
 export class WidgetTwoComponent implements WidgetBase  {
   _data: Data;
   _toggle: Toggle;
-  constructor(private hostElement: ElementRef, private apiService: ApiService ){}
+  constructor(private hostElement: ElementRef) {}
 
   @Input()
   set data(data: any) {
@@ -28,8 +27,5 @@ export class WidgetTwoComponent implements WidgetBase  {
     }
     this._data = data;
   }
-  
-  getItem(id, forceRefreshFromServer) {
-    this.apiService.getItems([id], forceRefreshFromServer);  
-  }
+
 }
