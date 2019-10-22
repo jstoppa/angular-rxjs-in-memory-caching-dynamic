@@ -18,12 +18,12 @@ import { ApiService } from './api.service';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class WidgetOneComponent implements WidgetBase {
-  _data: Data;
+  _data: any;
   _toogle: any;
   constructor(private hostElement: ElementRef, private apiService: ApiService ){}
 
   @Input()
-  set data(data: Data) {
+  set data(data: any) {
     if (data && data.id && this.hostElement && this.hostElement.nativeElement) {
       this.hostElement.nativeElement.firstElementChild.style.backgroundColor = 'pink';
       setTimeout(() => {
