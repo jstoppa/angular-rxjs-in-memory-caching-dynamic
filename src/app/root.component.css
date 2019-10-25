@@ -1,13 +1,4 @@
-.widget {
-  font-family: Lato;
-  border-style: solid; 
-  border-color: #4CAF50;
-  background-color: aquamarine;
-  margin-top: 5px; 
-  padding-top: 5px;
-  padding-left: 15px;
-  border-radius: 10px;
-}
+
 
 button {
   background-color: #4CAF50; /* Green */

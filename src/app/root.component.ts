@@ -1,6 +1,7 @@
-import { Component, AfterViewInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, AfterViewInit, ChangeDetectionStrategy, ElementRef } from '@angular/core';
 import { ApiService } from './api.service';
 import { WidgetConfig } from './models';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'my-app',
@@ -8,17 +9,16 @@ import { WidgetConfig } from './models';
     <button (click)="getAllItems(false)">Refresh ALL Data from Cache</button>
     <button (click)="getAllItems(true)">Refresh ALL Data from Server</button>
     <div *ngFor="let widget of widgets">
-      <div class="widget">
-        <container [data]="bsubs[widget] | async" [widgetConfig]="widget"></container>
-        <button (click)="getItems(widget?.id, false)">Refresh Data from Cache</button>
-        <button (click)="getItem(widget?.id, true)">Refresh Data from Server</button>
-      </div>
+      <container [bsub$]="bsubs$[widget.apiId]" [widgetConfig]="widget"></container>
     </div>
   `,
   styleUrls: ['./root.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class RootComponent implements AfterViewInit  {
+
+  constructor(private apiService: ApiService) {}
+
   widgets = [
   {
     apiId: 1,
@@ -39,27 +39,21 @@ export class RootComponent implements AfterViewInit  {
   {
     apiId: 4,
     widgetName: 'WidgetOneComponent'
-  },
-  {
-    apiId: 4,
-    widgetName: 'WidgetTwoComponent'
   }] as WidgetConfig[];
 
-   
-  bsubs = this.apiService.getSubjects(this.widgets.map( ({apiId}) => apiId));
-  
-  constructor(private apiService: ApiService ){}
 
-  ngAfterViewInit() { 
-    this.getAllItems(true);
+  bsubs$ = this.apiService.getSubjects(this.widgets.map( ({apiId}) => apiId));
+
+  ngAfterViewInit() {
+   this.getAllItems(true);
   }
 
   getAllItems(forceRefreshFromServer: boolean) {
-    this.getItems(this.widgets.map( ({apiId}) => apiId), true);
+    this.getItems(this.widgets.map( ({apiId}) => apiId), forceRefreshFromServer);
   }
-  
+
   getItems(apiIds: number[], forceRefreshFromServer: boolean) {
-    this.apiService.getItems(apiIds, forceRefreshFromServer);  
+    this.apiService.getItems(apiIds, forceRefreshFromServer);
   }
 
 }

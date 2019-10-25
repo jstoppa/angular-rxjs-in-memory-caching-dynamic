@@ -20,12 +20,10 @@ export interface Toggle {
 }
 
 export declare interface WidgetBase {
-  componentName: string;
   _data: any;
   _toggle: any;
+
   
-  data(data: any);
-  toggle(toogle: any);
 }
 
 export interface WidgetConfig {

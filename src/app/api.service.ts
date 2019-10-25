@@ -11,7 +11,7 @@ import { BehaviorSubjectObject, DataCache, Data } from './models';
 @Injectable()
 export class ApiService {
   constructor(private httpClient: HttpClient){}
-  
+
   bsubs: BehaviorSubjectObject = {};
   dataCache: DataCache = {};
 
@@ -25,7 +25,7 @@ export class ApiService {
         iif(
           // force refresh or get data from cache
           () => forceRefreshFromServer || !(this.dataCache && this.dataCache[id]),
-          // get data from server (add a random delay to simulate latency) 
+          // get data from server (add a random delay to simulate latency)
           this.httpClient.
             get(`https://jsonplaceholder.typicode.com/todos/${id}`).
             pipe(delay(Math.floor(Math.random() * 3000) + 1)) as Observable<Data>,

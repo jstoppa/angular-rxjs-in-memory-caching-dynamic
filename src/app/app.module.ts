@@ -12,7 +12,7 @@ import { WidgetTwoComponent } from './widget-two.component';
 @NgModule({
   imports:          [ BrowserModule, FormsModule, HttpClientModule],
   declarations:     [ ContainerComponent, RootComponent,
-                      WidgetOneComponent, WidgetTwoComponent],
+                      WidgetOneComponent, WidgetTwoComponent ],
   entryComponents:  [ WidgetOneComponent, WidgetTwoComponent],
   bootstrap:    [ RootComponent ]
 })
